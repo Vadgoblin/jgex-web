@@ -4,12 +4,13 @@
     <meta charset="utf-8" />
     <title>CheerpJ Java App Example</title>
     <script src="https://cjrtnc.leaningtech.com/4.3/loader.js"></script>
+    <link rel="stylesheet" href="style.css">.
   </head>
   <body>
     <script>
       (async function () {
         await cheerpjInit({ version: 17 });
-        cheerpjCreateDisplay(800, 600);
+        cheerpjCreateDisplay();
         await cheerpjRunJar("/app/jgex.jar");
       })();
     </script>
