@@ -1,5 +1,6 @@
-async function Java_wprover_NativeFileBridge_showOpenDialog(lib, self ) {
-  console.log("Yay!");
+async function Java_wprover_NativeFileBridge_showOpenDialog(lib) {
+  const ClassName = await lib.wprover.NativeFileBridge;
+  await ClassName.onFileLoaded("dummy string");
 }
 
 
