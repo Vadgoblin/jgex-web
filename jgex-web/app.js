@@ -1,5 +1,15 @@
+async function Java_wprover_NativeFileBridge_showOpenDialog(lib, self ) {
+  console.log("Yay!");
+}
+
+
 async function main() {
-  await cheerpjInit({ version: 17 });
+  await cheerpjInit(
+    {
+      version: 17,
+      natives: { Java_wprover_NativeFileBridge_showOpenDialog }
+    }
+  );
   cheerpjCreateDisplay(-1, -1, document.body);
   await cheerpjRunJar("/app/jgex.jar");
 }
