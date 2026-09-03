@@ -1,6 +1,6 @@
 async function main() {
   await cheerpjInit({ version: 17 });
-  cheerpjCreateDisplay();
+  cheerpjCreateDisplay(-1, -1, document.body);
   await cheerpjRunJar("/app/jgex.jar");
 }
 
