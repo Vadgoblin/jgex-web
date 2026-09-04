@@ -1,4 +1,4 @@
-async function Java_wprover_CheerpJIntegration_WebFileChooser_triggerJsFileDialog(lib, extensions) {
+async function Java_wprover_CheerpJIntegration_WebOpenFileDialog_triggerJsFileDialog(lib, extensions) {
     return new Promise((resolve) => {
         const input = document.createElement("input");
         input.type = "file";
@@ -17,7 +17,7 @@ async function Java_wprover_CheerpJIntegration_WebFileChooser_triggerJsFileDialo
                     extList.push(ext);
                 }
             }
-            
+
             if (extList.length > 0) {
                 input.accept = extList.join(",");
             }
@@ -62,7 +62,7 @@ async function main() {
   await cheerpjInit(
     {
       version: 17,
-      natives: { Java_wprover_CheerpJIntegration_WebFileChooser_triggerJsFileDialog }
+      natives: { Java_wprover_CheerpJIntegration_WebOpenFileDialog_triggerJsFileDialog }
     }
   );
   cheerpjCreateDisplay(-1, -1, document.body);
