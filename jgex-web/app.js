@@ -57,12 +57,41 @@ async function Java_wprover_CheerpJIntegration_WebOpenFileDialog_triggerJsFileDi
     });
 }
 
+async function Java_wprover_CheerpJIntegration_WebSaveFileDialog_triggerJsFileDownload(lib, virtualPath, defaultName) {
+    try {
+        const pathStr = String(virtualPath);
+        const fileName = String(defaultName);
+
+        const blob = await cjFileBlob(pathStr);
+        const blobUrl = URL.createObjectURL(blob);
+
+        const anchor = document.createElement("a");
+        anchor.href = blobUrl;
+        anchor.download = fileName;
+        anchor.style.display = "none";
+        document.body.appendChild(anchor);
+
+        anchor.click();
+
+        // Cleanup
+        setTimeout(() => {
+            URL.revokeObjectURL(blobUrl);
+            anchor.remove();
+        }, 1000);
+
+    } catch (err) {
+        console.error("Failed to download file from CheerpJ:", err);
+    }
+}
 
 async function main() {
   await cheerpjInit(
     {
       version: 17,
-      natives: { Java_wprover_CheerpJIntegration_WebOpenFileDialog_triggerJsFileDialog }
+      natives: {
+          Java_wprover_CheerpJIntegration_WebOpenFileDialog_triggerJsFileDialog,
+          Java_wprover_CheerpJIntegration_WebSaveFileDialog_triggerJsFileDownload
+      }
     }
   );
   cheerpjCreateDisplay(-1, -1, document.body);
