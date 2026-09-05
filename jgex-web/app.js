@@ -84,13 +84,22 @@ async function Java_wprover_CheerpJIntegration_WebSaveFileDialog_triggerJsFileDo
     }
 }
 
+async function Java_wprover_CheerpJIntegration_OpenWebPage_openWebPageJs(lib, urlString) {
+    const url = String(urlString);
+
+    // Open the URL in a new browser tab
+    window.open(url, '_blank');
+}
+
+
 async function main() {
   await cheerpjInit(
     {
       version: 17,
       natives: {
           Java_wprover_CheerpJIntegration_WebOpenFileDialog_triggerJsFileDialog,
-          Java_wprover_CheerpJIntegration_WebSaveFileDialog_triggerJsFileDownload
+          Java_wprover_CheerpJIntegration_WebSaveFileDialog_triggerJsFileDownload,
+          Java_wprover_CheerpJIntegration_OpenWebPage_openWebPageJs,
       }
     }
   );
